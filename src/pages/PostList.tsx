@@ -71,6 +71,7 @@ const PostList = () => {
               title={post.title}
               username={post.userName}
               description={post.body}
+              postId={post.id}
             />
           </li>
         ))}
