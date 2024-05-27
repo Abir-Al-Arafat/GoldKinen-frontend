@@ -60,8 +60,6 @@ const PostList = () => {
 
   console.log("postsWithUserNames", postsWithUserNames);
   console.log("postsWithUserNames lenght", postsWithUserNames.length);
-  // console.log("pages", postData.pages[postData.pages.length - 1][9]);
-  // console.log("pages", postData.pages[postData.pages.length - 1].length);
 
   return (
     <div className="container d-flex flex-column align-items-center">
@@ -69,9 +67,6 @@ const PostList = () => {
       <ul className="list-group">
         {postsWithUserNames.map((post) => (
           <li key={post.id} className="list-group-item">
-            {/* <h2>{post.title}</h2>
-            <p>By: {post.userName}</p>
-            <p>{post.body}</p> */}
             <TimelineCard
               title={post.title}
               username={post.userName}
