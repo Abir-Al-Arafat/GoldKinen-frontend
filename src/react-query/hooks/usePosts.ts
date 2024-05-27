@@ -23,7 +23,7 @@ const fetchPosts = async ({
   const totalPosts = 100; // Known total posts
   const start = totalPosts - pageParam * pageSize;
   const { data } = await axios.get<Post[]>(
-    "https://jsonplaceholder.typicode.com/posts",
+    "https://jsonplaceholder.typicode.com/postsx",
     {
       params: {
         _start: start >= 0 ? start : 0,

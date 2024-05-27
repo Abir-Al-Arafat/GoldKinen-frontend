@@ -1,4 +1,4 @@
-import { Spinner } from "react-bootstrap";
+import { Spinner, Alert } from "react-bootstrap";
 import Loader from "../components/Loader";
 import TimelineCard from "../components/TimelineCard";
 import TotalPostsBadge from "../components/TotalPostsBadge";
@@ -22,15 +22,24 @@ const PostList = () => {
 
   if (postsLoading || usersLoading) {
     return <Loader />;
-    // return <p>Loading....</p>;
   }
 
   if (postsError) {
-    return <p>{postsError.message}</p>;
+    return (
+      <Alert key="danger" variant="danger">
+        {postsError.message}
+        <Alert.Link href="/"> Try Reloading</Alert.Link>
+      </Alert>
+    );
   }
 
   if (usersError) {
-    return <p>{usersError.message}</p>;
+    return (
+      <Alert key="danger" variant="danger">
+        {usersError.message}
+        <Alert.Link href="/"> Try Reloading</Alert.Link>
+      </Alert>
+    );
   }
 
   const users = usersData?.reduce(
@@ -74,10 +83,7 @@ const PostList = () => {
       <button
         className="btn btn-primary w-25 my-3"
         onClick={() => fetchNextPage()}
-        disabled={
-          isFetchingNextPage || postsWithUserNames.length >= 100
-          // postData.pages[postData.pages.length - 1].length === 0
-        }
+        disabled={isFetchingNextPage || postsWithUserNames.length >= 100}
       >
         {isFetchingNextPage ? (
           <>
