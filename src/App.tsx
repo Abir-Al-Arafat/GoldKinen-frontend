@@ -1,11 +1,10 @@
 import "./App.css";
-import TodoList from "./react-query/TodoList";
-import PostList from "./react-query/PostList";
-import NavBar from "./routing/NavBar";
+import PostList from "./pages/PostList";
+import NavBar from "./components/NavBar";
 
 function App() {
   return (
-    <div className="container ">
+    <div className="container">
       <NavBar />
       <PostList />
     </div>
