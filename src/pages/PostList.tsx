@@ -1,3 +1,5 @@
+import { Spinner } from "react-bootstrap";
+import Loader from "../components/Loader";
 import TimelineCard from "../components/TimelineCard";
 import TotalPostsBadge from "../components/TotalPostsBadge";
 import usePosts from "../react-query/hooks/usePosts";
@@ -19,7 +21,8 @@ const PostList = () => {
   } = useUsers();
 
   if (postsLoading || usersLoading) {
-    return <p>Loading....</p>;
+    return <Loader />;
+    // return <p>Loading....</p>;
   }
 
   if (postsError) {
@@ -76,7 +79,21 @@ const PostList = () => {
           // postData.pages[postData.pages.length - 1].length === 0
         }
       >
-        {isFetchingNextPage ? `Loading Data` : `Load More`}
+        {isFetchingNextPage ? (
+          <>
+            {" "}
+            <Spinner
+              as="span"
+              animation="border"
+              size="sm"
+              role="status"
+              aria-hidden="true"
+            />
+            <span>Loading...</span>
+          </>
+        ) : (
+          `Load More`
+        )}
       </button>
     </div>
   );
